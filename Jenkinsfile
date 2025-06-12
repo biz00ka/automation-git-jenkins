@@ -72,11 +72,15 @@ pipeline {
         }
     }
 
-//     post {
-//         always {
-//             // Send email notifications or Slack notifications based on build status
-//             // mail to: 'siddharthdubey45@gmail.com', subject: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result}", body: "Check build log at ${env.BUILD_URL}"
-//             // For Slack: slackSend channel: '#your-slack-channel', message: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result} - ${env.BUILD_URL}"
-//         }
-//     }
+ post {
+        always {
+            // All steps within post-conditions must be inside a 'steps' block
+            steps { // <--- Added this 'steps' block
+            echo "post stage in jenkins file."
+                // Send email notifications or Slack notifications based on build status
+               // mail to: 'siddharthdubey45@gmail.com', subject: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result}", body: "Check build log at ${env.BUILD_URL}"
+                // For Slack: slackSend channel: '#your-slack-channel', message: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result} - ${env.BUILD_URL}"
+            } // <--- Closed this 'steps' block
+        }
+    }
 }
