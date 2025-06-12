@@ -36,9 +36,9 @@ pipeline {
 
         stage('Code Quality Analysis (SonarQube)') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar-token') { // Ensure this matches your Jenkins credential ID
-                    sh "mvn sonar:sonar -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=src/test/java"
-                }
+                withSonarQubeEnv(installationName: 'sonar server', credentialsId: 'sonar-token') { // Ensure this matches your Jenkins credential ID
+                                    sh "mvn sonar:sonar -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=src/test/java"
+                                }
             }
         }
 
