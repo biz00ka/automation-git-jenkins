@@ -74,7 +74,7 @@ pipeline {
     post {
         always {
             // Send email notifications or Slack notifications based on build status
-             For email: mail to: 'siddharthdubey45@gmail.com', subject: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result}", body: "Check build log at ${env.BUILD_URL}"
+             mail to: 'siddharthdubey45@gmail.com', subject: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result}", body: "Check build log at ${env.BUILD_URL}"
             // For Slack: slackSend channel: '#your-slack-channel', message: "Pipeline ${currentBuild.fullDisplayName} Status: ${currentBuild.result} - ${env.BUILD_URL}"
         }
     }
