@@ -36,6 +36,7 @@ public class ApiTests {
                 .andReturn();
 
         System.out.println(response.prettyPrint());
+        System.out.println("The status code is :: "+response.getStatusCode());
     }
 
 
