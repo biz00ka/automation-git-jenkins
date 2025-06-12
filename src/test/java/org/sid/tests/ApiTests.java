@@ -1,6 +1,7 @@
 package org.sid.tests;
 
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -23,4 +24,19 @@ public class ApiTests {
                 .body("data[0].first_name", equalTo("Michael"));
 
     }
+
+    @Test
+    public void showSecond()
+    {
+        System.out.println("Second test launch.");
+        RestAssured.baseURI = "https://reqres.in/api";
+        Response response=given()
+                .when()
+                .get("/users?page=2")
+                .andReturn();
+
+        System.out.println(response.prettyPrint());
+    }
+
+
 }
