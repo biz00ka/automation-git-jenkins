@@ -71,6 +71,7 @@ pipeline {
             }
         }
     }
+
     post {
         always {
             // Send email notifications or Slack notifications based on build status
